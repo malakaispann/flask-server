@@ -14,6 +14,7 @@ Made to showcase simple Flask application and also help run tests for Strata's H
 2. Change to the repo's directory: `cd flask-server`
 3. Start server and run tests : `docker compose up --detach`
     - Server accessible via "http://localhost:5001"
+    - Uses default network 'flask-server_default'
 4. Check test logs: `docker logs flask-server-test-1`
 
 -   Should look like this
@@ -37,3 +38,7 @@ Made to showcase simple Flask application and also help run tests for Strata's H
         - Returns: {"data": "Hello World", "input": <whatever was passed in your post request>}
 
 See [test cases](./server/test_app.py) for some examples.
+
+## Shutdown
+
+Run `docker compose down --volumes --remove-orphans`
