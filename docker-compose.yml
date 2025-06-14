@@ -1,0 +1,20 @@
+services:
+  server:
+    build: &build-opts
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 5001:5001
+    volumes:
+      - ./server:/apps/server
+    working_dir: /apps
+    command: ["python3", "-m", "server.app"]
+
+  test:
+    build: *build-opts
+    volumes:
+      - ./server:/apps/server
+    working_dir: /apps/server
+    environment:
+      URI: "http://server:5001"
+    command: ["python3", "-m", "pytest"]
